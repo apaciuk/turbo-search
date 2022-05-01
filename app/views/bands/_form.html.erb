@@ -1,0 +1,34 @@
+<%= form_with(model: band) do |form| %>
+  <% if band.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(band.errors.count, "error") %> prohibited this band from being saved:</h2>
+
+      <ul>
+      <% band.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+
+  <div class="mb-3">
+    <% if band.persisted? %>
+      <div class="float-end">
+        <%= link_to 'Destroy', band, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if band.persisted? %>
+      <%= link_to "Cancel", band, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", bands_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

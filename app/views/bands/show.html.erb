@@ -1,0 +1,14 @@
+<div class="page-header">
+  <%= link_to bands_path, class: 'btn btn-default' do %>
+    All Bands
+  <% end %>
+  <%= link_to edit_band_path(@band), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show band</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @band.name %></dd>
+</dl>

@@ -1,0 +1,29 @@
+
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <h2>Bands</h2>
+    <%= form_with(url: bands_path, method: :get, data: { controller: "search-form", turbo_frame: "Bands", turbo_action: "advance"}) do |form| %>
+      <div class="alert alert-success mb-3">
+       <p class="lead">Search By Band Name</p>
+      </div>
+      <div class="mb-3">
+    <%= form.text_field :query, class: "form-control", data: { action: "input->search-form#search"} %>
+      </div>
+      <div class="mb-3">
+        <%= form.submit :Search, class: 'btn btn-success bt-lg' %>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div class="col-sm-6">
+  <%= render "bands", bands: @bands %>
+  </div>
+  <div class="col-sm-6 text-end">
+  <%= link_to new_band_path, class: 'btn btn-primary' do %>
+    Add New Band
+  <% end %>
+  </div>
+</div>
